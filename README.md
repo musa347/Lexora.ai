@@ -1,6 +1,15 @@
-# Overview (goal & high-level architecture)
 
-Goal: ship a local, secure assistant that answers developer/devops/support questions by combining retrieval from internal knowledge (docs, code, infra, logs) with local LLM generation. Two UX surfaces: a lightweight Teams bot (docs-only) and a richer Streamlit web UI (deep access to code/configs/logs).
+# Lexora AI — Local LLM Assistant
+
+## Purpose:
+Lexora AI is an on-prem / internal assistant for engineers (developers, DevOps, application support).
+It combines a Python ingestion pipeline (documents, code, configs → embeddings → Qdrant) with a Spring Boot orchestration service that serves two retrievers:
+
+DocsRetriever — used by the Teams bot (docs & runbooks only), and
+
+FullRetriever — used by the Streamlit web UI (docs + code + infra + logs).
+
+This README is intentionally comprehensive: it covers architecture, exact setup steps, configuration, security, ingestion strategy, API contracts, prompt templates, deployment hints, and troubleshooting.
 
 # Core components:
 
